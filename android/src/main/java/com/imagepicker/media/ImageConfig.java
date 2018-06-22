@@ -2,6 +2,7 @@ package com.imagepicker.media;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.webkit.MimeTypeMap;
 
 import com.facebook.react.bridge.ReadableMap;
 
@@ -140,7 +141,8 @@ public class ImageConfig
                                int initialHeight,
                                int currentRotation)
     {
-        return ((initialWidth < maxWidth && maxWidth > 0) || maxWidth == 0) &&
+        return "gif".equalsIgnoreCase(MimeTypeMap.getFileExtensionFromUrl(this.original.getAbsolutePath()))
+                || ((initialWidth < maxWidth && maxWidth > 0) || maxWidth == 0) &&
                 ((initialHeight < maxHeight && maxHeight > 0) || maxHeight == 0) &&
                 quality == 100 && (rotation == 0 || currentRotation == rotation);
     }

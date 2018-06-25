@@ -141,7 +141,8 @@ public class ImageConfig
                                int initialHeight,
                                int currentRotation)
     {
-        return "gif".equalsIgnoreCase(MimeTypeMap.getFileExtensionFromUrl(this.original.getAbsolutePath()))
+        final String fileExt = MimeTypeMap.getFileExtensionFromUrl(this.original.getAbsolutePath());
+        return "gif".equalsIgnoreCase(fileExt) || "webp".equalsIgnoreCase(fileExt)
                 || ((initialWidth < maxWidth && maxWidth > 0) || maxWidth == 0) &&
                 ((initialHeight < maxHeight && maxHeight > 0) || maxHeight == 0) &&
                 quality == 100 && (rotation == 0 || currentRotation == rotation);
